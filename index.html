@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Relentless — Get Access</title>
+  <style>
+    :root{
+      --bg:#0a0a0a;
+      --fg:#fff;
+      --muted:#9a9a9a;
+      --accent:#ffffff;
+      --glass: rgba(255,255,255,0.04);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;}
+    body{
+      margin:0;
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Noto Sans",sans-serif;
+      background: radial-gradient(circle at 10% 10%, rgba(255,255,255,0.02), transparent 10%), linear-gradient(180deg, #070707 0%, #0e0e0e 100%);
+      color:var(--fg);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      overflow:hidden;
+    }
+
+    /* subtle vinyl / rings background */
+    .rings{
+      position:fixed;inset:0;pointer-events:none;mix-blend-mode:overlay;opacity:0.14;
+      background-image:radial-gradient(circle at center, transparent 40%, rgba(0,0,0,0.6) 41%);
+      background-size:1200px 1200px;
+      transform:scale(1.25) rotate(-6deg);
+      filter:blur(8px) contrast(1.1);
+    }
+
+    .wrap{
+      min-height:100vh;display:flex;align-items:center;justify-content:center;padding:48px;
+    }
+
+    .card{
+      width:980px;max-width:96vw;background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent 40%);
+      border-radius:18px;padding:48px;position:relative;overflow:hidden;border:1px solid rgba(255,255,255,0.04);
+      box-shadow:0 20px 60px rgba(0,0,0,0.7);
+      display:grid;grid-template-columns:260px 1fr;gap:28px;align-items:center;
+    }
+
+    /* logo column */
+    .logo-wrap{display:flex;flex-direction:column;align-items:center;gap:18px}
+    .logo{
+      width:200px;height:200px;border-radius:14px;background:var(--glass);display:flex;align-items:center;justify-content:center;border:1px solid rgba(255,255,255,0.06);
+      transform:rotate(-4deg);backdrop-filter: blur(4px);
+    }
+    .logo img{max-width:85%;max-height:85%;filter:grayscale(100%) contrast(1.05)}
+
+    /* title */
+    h1{font-size:48px;margin:0;letter-spacing:2px;font-weight:800;text-transform:uppercase;line-height:0.95}
+    .title-wrap{display:flex;align-items:center;gap:16px}
+
+    /* bobbing animation for the word Relentless */
+    .word-relentless{display:inline-block;transform-origin:center;animation:float 2.2s ease-in-out infinite;}
+    @keyframes float{
+      0%{transform:translateY(0)}
+      50%{transform:translateY(-10px)}
+      100%{transform:translateY(0)}
+    }
+
+    .subtitle{color:var(--muted);margin-top:8px}
+
+    /* steps */
+    .steps{margin-top:22px;padding:18px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.015));border:1px solid rgba(255,255,255,0.03)}
+    .steps ol{margin:0;padding:0 0 0 18px;color:var(--muted)}
+    .steps li{margin:12px 0;padding:8px 12px;border-radius:8px;display:flex;align-items:center;gap:12px;background:transparent}
+    .steps li .num{width:28px;height:28px;border-radius:6px;background:#111;border:1px solid rgba(255,255,255,0.03);display:flex;align-items:center;justify-content:center;color:var(--muted);font-weight:700}
+    .steps a{color:var(--fg);text-decoration:none;border-bottom:1px dashed rgba(255,255,255,0.06)}
+
+    .commands{margin-top:20px;padding:18px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.02));border:1px solid rgba(255,255,255,0.03)}
+    .cmd{font-family:monospace;background:#0f0f0f;padding:10px 12px;border-radius:8px;color:var(--muted);display:inline-block;margin-right:12px}
+    .cmd.bold{color:var(--fg);font-weight:700}
+
+    /* right column: big callout */
+    .panel{padding:12px 18px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.015));border:1px solid rgba(255,255,255,0.03)}
+    .panel p{margin:0;color:var(--muted)}
+
+    /* bottom bar */
+    .bottom{position:fixed;left:50%;transform:translateX(-50%);bottom:18px;background:rgba(0,0,0,0.55);backdrop-filter:blur(6px);padding:10px 18px;border-radius:999px;border:1px solid rgba(255,255,255,0.04);display:flex;align-items:center;gap:12px}
+    .bottom img{width:20px;height:20px;display:block}
+    .bottom a{color:var(--muted);text-decoration:none;font-size:13px}
+
+    /* edge glints */n
+    .glint{position:absolute;left:-40%;top:-40%;width:200%;height:200%;background:linear-gradient(90deg, transparent 30%, rgba(255,255,255,0.035) 50%, transparent 70%);transform:rotate(25deg);animation:glide 6s linear infinite}
+    @keyframes glide{from{transform:translateX(-100%) rotate(25deg)}to{transform:translateX(100%) rotate(25deg)}}
+
+    /* interactive: hover reveal */
+    .card:hover .logo{transform:rotate(0) scale(1.02)}
+    .card:focus-within .logo{transform:scale(1.02)}
+
+    /* responsive */
+    @media (max-width:880px){
+      .card{grid-template-columns:1fr;gap:16px;padding:20px}
+      .logo{width:140px;height:140px}
+      h1{font-size:34px}
+    }
+
+  </style>
+</head>
+<body>
+  <div class="rings" aria-hidden="true"></div>
+
+  <div class="wrap">
+    <div class="card" role="main" aria-labelledby="main-title">
+      <div class="logo-wrap">
+        <div class="logo" aria-hidden="false">
+          <!-- Put the provided image next to this HTML file as 'red_logos-02.png' -->
+          <img src="red_logos-02.png" alt="Relentless logo" />
+        </div>
+        <div style="text-align:center;color:var(--muted);font-size:13px">Relentless</div>
+      </div>
+
+      <div>
+        <div class="title-wrap">
+          <h1 id="main-title"><span class="word-relentless">Relentless</span>. <span style="font-weight:500;font-size:18px;color:var(--muted);margin-left:8px">Welcome</span></h1>
+        </div>
+        <div class="subtitle">To gain access — follow the steps below</div>
+
+        <div class="steps" aria-label="How to get access">
+          <ol>
+            <li><span class="num">1</span> <span style="color:var(--muted);margin-left:6px">Join the <a href="https://discord.gg/MnnkNYbQaN" target="_blank" rel="noopener noreferrer">Discord</a></span></li>
+            <li><span class="num">2</span> <span style="color:var(--muted);margin-left:6px">Go to the <strong style="color:var(--fg)">Gain Access</strong> channel in the <em style="color:var(--muted)">Bots</em> category</span></li>
+            <li><span class="num">3</span> <span style="color:var(--muted);margin-left:6px">Run the commands below in the specified channel</span></li>
+          </ol>
+
+          <div class="commands" style="margin-top:12px;">
+            <div class="cmd">R*rbot <span style="opacity:0.6;margin-left:8px">— Raid Bot</span></div>
+            <div class="cmd">R*nbot <span style="opacity:0.6;margin-left:8px">— Nuke Bot</span></div>
+          </div>
+        </div>
+
+        <div style="margin-top:22px;display:flex;gap:12px;align-items:center">
+          <a href="https://relentless.vercel.app/get-access" class="panel" style="text-decoration:none;color:inherit;display:inline-block">
+            <p style="font-weight:700;color:var(--fg);margin-bottom:6px">Get Access</p>
+            <p>relentless.vercel.app/get-access</p>
+          </a>
+
+          <div class="panel" style="flex:1">
+            <p style="margin:0 0 6px 0;font-weight:700">Important</p>
+            <p style="margin:0;color:var(--muted)">Use the bots responsibly (great power comes with great responsibility)</p>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="glint" aria-hidden="true"></div>
+    </div>
+  </div>
+
+  <div class="bottom" role="contentinfo">
+    <img src="https://logos-world.net/wp-content/uploads/2020/12/Discord-Logo.png" alt="Discord logo"/>
+    <a href="https://discord.gg/MnnkNYbQaN" target="_blank" rel="noopener noreferrer">Join our Discord</a>
+    <div style="width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.06)"></div>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/c/c4/Globe_icon.svg" alt="globe"/>
+    <a href="https://relentless.vercel.app/get-access" target="_self">relentless.vercel.app/get-access</a>
+  </div>
+
+  <script>
+    // small accessibility improvement: allow 'r' to focus the Get Access link
+    document.addEventListener('keydown', (e)=>{
+      if(e.key.toLowerCase()==='r' && !/input|textarea/i.test(document.activeElement.tagName)){
+        const link = document.querySelector('a[href="https://relentless.vercel.app/get-access"]');
+        if(link) { link.focus(); link.classList.add('pulse'); setTimeout(()=>link.classList.remove('pulse'),900); }
+      }
+    });
+
+    // tiny entrance animation
+    window.addEventListener('load', ()=>{
+      document.querySelectorAll('.card, .logo, .word-relentless').forEach((el,i)=>{
+        el.style.opacity=0;el.style.transform='translateY(10px)';
+        setTimeout(()=>{ el.style.transition='transform .7s cubic-bezier(.2,.9,.3,1), opacity .7s'; el.style.opacity=1; el.style.transform='translateY(0)'; }, 120*i);
+      });
+    });
+  </script>
+</body>
+</html>
